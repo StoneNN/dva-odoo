@@ -48,6 +48,7 @@ export default service => {
 
   const login = async params => {
     const { url, db } = service.login;
+    console.log('login-url,db ---',url,'---',db);
     return await req(url, jsonrpc({ ...params, db }));
   };
 

@@ -18,17 +18,20 @@ export default odooService => {
 
     effects: {
       *login({ payload }, { call, put, select }) {
+        console.log('dva-odoo-login ----',payload);
         const response = yield odooService.login(payload);
+        console.log('login-response ----',response);
         const { result, error: errormsg } = response;
         const data = result;
 
         if (data.status === 'ok') {
+          console.log('dva-odoo-login-成功 ----',response)
           /* check login result, save login info: sid, uid */
           yield put({ type: 'save', payload: { ...data } });
           const { uid: id } = data;
         } else {
           // ? how to update state?
-           console.log('11',response)
+           console.log('dva-odoo-login-失败 ----',response)
         }
       },
     },

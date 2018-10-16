@@ -53,14 +53,17 @@ class Bridge extends Component {
       type: 'login/login',
       payload: { login: user, password, type: 'account' },
       callback: data => {
+        console.log('login-callback ---',data);
         this.setState({ data });
-      },
+        },
       error: data => {
+        console.log('login-error ---',data);
         this.setState({ data });
-      },
+        },
       success: data => {
+        console.log('login-success ---',data);
         this.setState({ data });
-      },
+        },
     });
   };
 
