@@ -38,7 +38,7 @@ const create_normal = ({ options, odooCall }) => {
     apis: [...(outApis ? outApis : []), ...(odooApi ? [odooApi] : [])],
     extend: [...(outExtend ? outExtend : []), ...(dvaModel ? [dvaModel] : [])],
   });
-  
+
   let api = {};
   for (const apiCreators of apis) {
     const ppp = apiCreators({ model, namespace, fields, odooCall, api });
@@ -64,14 +64,15 @@ export default options => {
 
   const { service } = options;
   const odooService = ServiceCreator(service);
-
+  console.log('dva-odoo-index-service ----',service);
   if (inherit == 'login') {
+    console.log('dva-odoo-index-odooService ----',odooService);
     const dvamodel = loginCreate(odooService);
     const { namespace } = dvamodel;
     const { extend = {} } = options;
     return modelExtend(dvamodel, { ...extend, namespace });
   }
 
-  
+
   return create_normal({ options, odooCall: odooService.call });
 };
