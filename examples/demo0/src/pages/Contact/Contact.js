@@ -113,9 +113,8 @@ class Bridge extends Component {
 
     return (
       <div>
-        <div>
-          test:
-          {JSON.stringify(this.state)}
+        <div>当前state-->
+          test:{JSON.stringify(this.state)}
         </div>
         <Search
           placeholder=""
