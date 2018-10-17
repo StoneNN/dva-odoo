@@ -15,6 +15,7 @@ class loginForm extends React.Component{
   }
   render(){
     const { getFieldDecorator } = this.props.form;
+    console.log('this.props.form ----',this.props.form);
     return(
       <div className={styles.normal}>
       <Form onSubmit={this.handleSubmit} className={styles.login_form}>
