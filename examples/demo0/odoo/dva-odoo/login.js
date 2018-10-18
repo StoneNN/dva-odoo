@@ -6,7 +6,7 @@
 */
 
 //import dvaOdooServices from './odooServices';
-
+import { routerRedux } from "dva";
 export default odooService => {
   return {
     namespace: 'login',
@@ -27,7 +27,11 @@ export default odooService => {
         if (data.status === 'ok') {
           console.log('dva-odoo-login-成功 ----',response)
           /* check login result, save login info: sid, uid */
-          yield put({ type: 'save', payload: { ...data } });
+          yield put(
+            routerRedux.push({
+              pathname:''
+            })
+          );
           const { uid: id } = data;
         } else {
           // ? how to update state?
