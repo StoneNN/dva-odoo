@@ -228,5 +228,3 @@ export default (options) => {
   const api = apiCreator(options);
   return { ...api  };
 };
-
-

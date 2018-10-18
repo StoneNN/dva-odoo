@@ -65,6 +65,7 @@ export default options => {
   const { service } = options;
   const odooService = ServiceCreator(service);
   console.log('dva-odoo-index-service ----',service);
+  
   if (inherit == 'login') {
     console.log('dva-odoo-index-odooService ----',odooService);
     const dvamodel = loginCreate(odooService);
