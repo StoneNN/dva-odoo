@@ -48,6 +48,7 @@ class Bridge extends Component {
     const v2 = value ? value : 'admin,123';
     const [user, password] = v2.split(',');
 
+    console.log('-------------------',{user},{password},[user, password]);
     const { dispatch } = this.props;
     dispatch({
       type: 'login/login',

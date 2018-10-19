@@ -22,9 +22,24 @@ class LoginForm extends React.Component{
       console.log('--- value判断 ----', values, '???', err);
       if (!err) {
         console.log('Received values of form: ', values);
+        const name = values.userName;
+        const passWord = values.password;
+        console.log('NAME&PASSWORD---',{name},{passWord});
         this.props.dispatch({
           type: 'login/login',
-          payload: { name: values.userName, pwd: values.password }
+          payload: { login: name, password:passWord, type: 'account'},
+          callback: data => {
+            console.log('login-callback ---',data);
+            this.setState({ data });
+            },
+          error: data => {
+            console.log('login-error ---',data);
+            this.setState({ data });
+            },
+          success: data => {
+            console.log('login-success ---',data);
+            this.setState({ data });
+            }
         });
       } else {
         console.log('请填写完整......');

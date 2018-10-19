@@ -6,7 +6,8 @@
 */
 
 //import dvaOdooServices from './odooServices';
-import { routerRedux } from "dva";
+import router from 'umi/router';
+
 export default odooService => {
   return {
     namespace: 'login',
@@ -25,17 +26,15 @@ export default odooService => {
         const data = result;
 
         if (data.status === 'ok') {
-          console.log('dva-odoo-login-成功 ----',response)
+          console.log('dva-odoo-login-成功 ----',response);
           /* check login result, save login info: sid, uid */
           yield put(
-            routerRedux.push({
-              pathname:''
-            })
+            router.push('Contact/Contact')
           );
           const { uid: id } = data;
         } else {
           // ? how to update state?
-           console.log('dva-odoo-login-失败 ----',response)
+           console.log('dva-odoo-login-失败 ----',response);
         }
       },
     },
